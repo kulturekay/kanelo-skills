@@ -1,13 +1,13 @@
 ---
 name: kanelo-service-business-os
-description: Kanelo Labs' reusable service-business operating system. Use whenever an agent makes a decision about service/niche selection, market validation, IACP/ICP, positioning and messaging, offer creation, pricing, outreach, sales calls, pipeline management, onboarding, delivery, hiring/training (humans or agents), retention, and expansion — and to evaluate venture hypotheses stored under `ventures/`. It routes each decision to the right reference playbook, applies Kanelo's positioning rules, and enforces required output and approval rules before anything reaches Caleb. Trigger this skill whenever a task touches how Kanelo finds, signs, serves, keeps, or expands customers, even if the request does not name a specific playbook. Don't use for general software, coding, or infrastructure tasks, or for anything unrelated to how Kanelo finds, signs, serves, keeps, or expands customers.
+description: Kanelo Labs' reusable service-business operating system. Use whenever an agent makes a decision about service/niche selection, market validation, IACP/ICP, positioning and messaging, offer creation, pricing, outreach, sales calls, pipeline management, onboarding, delivery, hiring/training (humans or agents), retention, and expansion — and to evaluate any venture hypothesis it is handed. It routes each decision to the right reference playbook, applies Kanelo's positioning rules, and enforces required output and approval rules before anything reaches Caleb. Trigger this skill whenever a task touches how Kanelo finds, signs, serves, keeps, or expands customers, even if the request does not name a specific playbook. Don't use for general software, coding, or infrastructure tasks, or for anything unrelated to how Kanelo finds, signs, serves, keeps, or expands customers.
 ---
 
 # Kanelo Service-Business OS
 
 This skill is the routing and judgment layer over Kanelo Labs' service-business knowledge base. It does **not** restate the source material. It tells you which reference file to open for a given decision, which lifecycle **stage** you are operating in, how to translate the source tactics through Kanelo's positioning, and what every output must contain before it goes to Caleb.
 
-The canonical operating knowledge lives in `references/` (14 playbooks). Venture hypotheses to be *evaluated* — not yet adopted as strategy — live in this skill's own `ventures/` folder, beside `references/` (so they ship with the skill but stay separate from canonical knowledge). Read only the file(s) relevant to the task. Do not load all 14 references at once.
+The canonical operating knowledge lives in `references/` (14 playbooks). Read only the file(s) relevant to the task — do not load all 14 references at once. Venture hypotheses are **not** stored in this skill: they are handed to you as task input (the task brief or a linked doc). This skill supplies the *method* for evaluating them (§7), never the hypothesis content itself.
 
 ---
 
@@ -37,7 +37,7 @@ It is durable infrastructure, not a one-task script. The same routing applies wh
 
 Identify which stage the task belongs to, then open only that stage's references. Stages run in sequence, but you re-enter earlier stages whenever evidence changes.
 
-**Current stage: A — Validation.** (See §9, KAN-2A.) Confirm or correct the market and offer hypothesis with real evidence before building acquisition machinery, delivery systems, or team.
+**Current stage: A — Validation.** (See §8, KAN-2A.) Confirm or correct the market and offer hypothesis with real evidence before building acquisition machinery, delivery systems, or team.
 
 ### A. Validation
 Confirm (or correct) the market + offer hypothesis with evidence.
@@ -185,7 +185,7 @@ If a tactic in a reference conflicts with these priorities, flag the conflict in
 
 Every output produced using this skill must explicitly state, in this order, as a clearly labelled block at the top or bottom of the output:
 
-1. **Source files used** — which reference(s) in `references/` (and which `ventures/` file, if any) informed the work.
+1. **Source files used** — which reference(s) in `references/` (and which provided hypothesis, if any) informed the work.
 2. **Stage** — where this sits in the Kanelo operating sequence (A–E).
 3. **Assumptions made** — what was taken as given.
 4. **Evidence still missing** — what would need to be true and is not yet confirmed.
@@ -227,9 +227,9 @@ When a task would cross one of these lines, stop at the draft/recommendation sta
 
 ## 7. How to Evaluate Venture Hypotheses
 
-Use this skill to evaluate venture hypotheses stored under `ventures/`.
+Use this skill to evaluate **any** venture hypothesis you are handed — supplied in the task brief, a linked doc, or the company workspace. The hypothesis is *input to the task*; this skill provides the evaluation method, not the hypothesis content. Nothing per-venture is stored in the skill itself.
 
-**A venture hypothesis is not company strategy until Caleb approves it.** Treat every file under `ventures/` as a candidate to be tested against evidence — never as an adopted direction, and never as canonical operating knowledge. Do not merge venture material into the `references/` knowledge base.
+**A venture hypothesis is not company strategy until Caleb approves it.** Treat every hypothesis you're given as a candidate to be tested against evidence — never as an adopted direction, and never as canonical operating knowledge. Do not merge venture material into the `references/` knowledge base.
 
 When evaluating a venture hypothesis, open the relevant reference files (usually the Validation-stage set) and produce:
 
@@ -249,21 +249,13 @@ Deliver the evaluation with the full Output Requirements block from §5. A recom
 
 ---
 
-## 8. Current venture hypotheses
-
-- `ventures/claude-cowork-ops/hypothesis.md` — Claude Cowork implementation for document-heavy operations teams, with small accounting/bookkeeping firms proposed as a first wedge.
-
-Evaluate these using §7. They are hypotheses under review, not strategy.
-
----
-
-## 9. KAN-2A guidance
+## 8. KAN-2A guidance
 
 For **KAN-2A market research**:
 
 - Use the **Validation stage** references (§2.A).
 - Compare possible first markets.
-- Include **boutique B2B agencies** and **Claude Cowork Ops / small accounting-bookkeeping firms** (`ventures/claude-cowork-ops/hypothesis.md`) as candidates.
+- Include **boutique B2B agencies** and the **Claude Cowork Ops / small accounting-bookkeeping firms** hypothesis (provided in the KAN-2A task brief) as candidates.
 - Recommend whether to **confirm, modify, or replace** the boutique B2B agency hypothesis.
 - **Hard stop:** do **not** proceed to ICP, target list, outreach, or pilot materials until Caleb approves the research brief. KAN-2A ends at a recommendation, not at execution.
 
