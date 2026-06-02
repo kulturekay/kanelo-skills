@@ -7,7 +7,7 @@ description: Kanelo Labs' reusable service-business operating system. Use whenev
 
 This skill is the routing and judgment layer over Kanelo Labs' service-business knowledge base. It does **not** restate the source material. It tells you which reference file to open for a given decision, which lifecycle **stage** you are operating in, how to translate the source tactics through Kanelo's positioning, and what every output must contain before it goes to Caleb.
 
-The canonical operating knowledge lives in `references/` (14 playbooks). Venture hypotheses to be *evaluated* — not yet adopted as strategy — live under `ventures/` at the repo root. Read only the file(s) relevant to the task. Do not load all 14 references at once.
+The canonical operating knowledge lives in `references/` (14 playbooks). Venture hypotheses to be *evaluated* — not yet adopted as strategy — live in this skill's own `ventures/` folder, beside `references/` (so they ship with the skill but stay separate from canonical knowledge). Read only the file(s) relevant to the task. Do not load all 14 references at once.
 
 ---
 
