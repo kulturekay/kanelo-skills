@@ -41,5 +41,5 @@ Fill in using the Validation-stage references and the §7 format. Mark each item
 
 ## Notes
 
-- This venture is one of the candidates KAN-2A must compare against the boutique B2B agency hypothesis (see `skills/kanelo-service-business-os/SKILL.md` §9).
-- Do not merge any of this material into `skills/kanelo-service-business-os/references/`.
+- This venture is one of the candidates KAN-2A must compare against the boutique B2B agency hypothesis (see this skill's `SKILL.md` §9 — `../../SKILL.md` from here).
+- Do not merge any of this material into this skill's `references/` folder (`../../references/`).
